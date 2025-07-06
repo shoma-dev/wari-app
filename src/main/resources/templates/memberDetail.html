@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>メンバー詳細</title>
+</head>
+<body>
+    <h1>メンバー詳細</h1>
+    <p>名前: <span th:text="${member.name}"></span></p>
+    <p>グループ名: <span th:text="${group.groupName}"></span></p>
+    <a th:href="@{|/group/${group.id}/members|}">メンバー一覧に戻る</a>
+</body>
+</html>

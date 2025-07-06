@@ -1,19 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "groups")  // ← 予約語「group」回避
+@Table(name = "groups")  // ← 予約語 group 回避OK
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String groupName;
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    private List<Member> members;  // ← 追加
 
     public Group() {
     }
@@ -28,5 +28,13 @@ public class Group {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+    }
+
+    public List<Member> getMembers() {       // ← 追加
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {  // ← 追加
+        this.members = members;
     }
 }

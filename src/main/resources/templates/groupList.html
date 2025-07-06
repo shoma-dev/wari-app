@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>グループ一覧</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>グループ一覧</h1>
+    <a href="/group/new" class="btn btn-success">＋ 新しいグループを作成</a>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-md-4 mb-4"
+      th:each="group : ${groups}"
+    >
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${group.groupName}">グループ名</h5>
+          <a th:href="@{|/group/${group.id}/members|}" class="btn btn-primary mt-2">メンバーを見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

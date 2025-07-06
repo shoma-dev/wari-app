@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>メンバー追加</title>
+</head>
+<body>
+    <h1>メンバーを追加</h1>
+    <form th:action="@{'/group/' + ${groupId} + '/members/create'}" method="post">
+        <label>名前：</label>
+        <input type="text" name="name" required>
+        <button type="submit">登録</button>
+    </form>
+    <a th:href="@{'/group/' + ${groupId} + '/members'}">← メンバー一覧に戻る</a>
+</body>
+</html>

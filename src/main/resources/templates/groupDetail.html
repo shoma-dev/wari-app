@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>グループ詳細</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h2 th:text="'グループ: ' + ${group.groupName}"></h2>
+
+    <h4 class="mt-4">メンバー</h4>
+    <ul>
+      <li th:each="member : ${members}" th:text="${member.name}"></li>
+    </ul>
+
+    <h4 class="mt-4">立て替え履歴</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>支払者</th>
+          <th>参加者</th>
+          <th>内容</th>
+          <th>金額</th>
+          <th>日付</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="expense : ${expenses}">
+          <td th:text="${expense.payer.name}"></td>
+          <td>
+            <span th:each="p : ${expense.participants}" th:text="${p.name} + ' '"></span>
+          </td>
+          <td th:text="${expense.description}"></td>
+          <td th:text="${expense.amount}"></td>
+          <td th:text="${#dates.format(expense.date, 'yyyy/MM/dd')}"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a th:href="@{'/group/' + ${group.id} + '/expenses/new'}" class="btn btn-primary mt-3">立て替え記録を追加</a>
+  </div>
+</body>
+</html>
