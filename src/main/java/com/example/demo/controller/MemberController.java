@@ -34,9 +34,12 @@ public class MemberController {
 
     @GetMapping("/new")
     public String showMemberForm(@PathVariable Long groupId, Model model) {
-        model.addAttribute("groupId", groupId);
+    Group group = groupRepository.findById(groupId)
+        .orElseThrow(() -> new IllegalArgumentException("グループが見つかりません: " + groupId));
+    model.addAttribute("group", group);
         return "memberForm";
     }
+
 
     @PostMapping("/create")
     public String createMember(@PathVariable Long groupId, @RequestParam String name) {

@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
   <div class="container py-5">
-    <h3 class="mb-4">{{ group.groupName }}の立替え記録追加</h3>
+   <h2 th:text="${group.groupName} + ' の立替え記録追加'"></h2>
 
     <form th:action="@{'/group/' + ${group.id} + '/expenses/create'}" method="post">
       <div class="mb-3">

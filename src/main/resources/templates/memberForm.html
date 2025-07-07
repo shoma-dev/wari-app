@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>メンバー追加</title>
+  <meta charset="UTF-8" />
+  <title>メンバーを追加</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 </head>
-<body>
-    <h1>メンバーを追加</h1>
-    <form th:action="@{'/group/' + ${groupId} + '/members/create'}" method="post">
-        <label>名前：</label>
-        <input type="text" name="name" required>
-        <button type="submit">登録</button>
+<body class="bg-light">
+
+<div class="container py-5">
+  <div class="card shadow p-4">
+    <h2 class="mb-4">メンバーを追加</h2>
+    <form th:action="@{'/group/' + ${group.id} + '/members/create'}" method="post">
+      <div class="mb-3">
+        <label for="name" class="form-label">名前</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">登録</button>
+      <a th:href="@{'/group/' + ${group.id} + '/detail'}" class="btn btn-secondary ms-2">戻る</a>
     </form>
-    <a th:href="@{'/group/' + ${groupId} + '/members'}">← メンバー一覧に戻る</a>
+  </div>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
